@@ -1,0 +1,1 @@
+add_executable(minesweeper 10189_minesweeper.c)
