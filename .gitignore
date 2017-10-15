@@ -74,6 +74,7 @@ dkms.conf
 # Executables
 
 ### CMake ###
+CMakeLists.txt
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
