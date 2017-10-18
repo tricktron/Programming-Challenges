@@ -13,8 +13,9 @@ Median selection see  | n worst case
 
 Approach | Code | Result
 --- | --- | ---
-Randomized selection | [vito_random](vito_random.c) | ![uva result](vito_median_runtime.png)
-
+Randomized selection | [vito_random](vito_random.c) | ![uva result](vito_random_runtime.png)
+Median selection | [vito_median](vito_median.c) | ![uva result](vito_median_runtime.png)
+C++ stl selection | [vito_stl](vito_stl.cpp)  | ![uva result](vito_stl_runtime.png)
 
 Surprisingly the randomized approach performs better because finding
 the median of medians generates more overhead on average.
