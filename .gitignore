@@ -5,7 +5,6 @@
 *.d
 
 # Object files
-*.o
 *.ko
 *.obj
 *.elf
@@ -33,14 +32,12 @@
 
 # Executables
 *.exe
-*.out
 *.app
 *.i*86
 *.x86_64
 *.hex
 
 # Debug files
-*.dSYM/
 *.su
 *.idb
 *.pdb
@@ -75,12 +72,8 @@ dkms.conf
 
 ### CMake ###
 CMakeLists.txt
-CMakeCache.txt
-CMakeFiles
 CMakeScripts
 Testing
-Makefile
-cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
@@ -91,7 +84,6 @@ build
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
 
@@ -230,7 +222,6 @@ acs-*.bib
 #(r)(e)ledmac/(r)(e)ledpar
 *.end
 *.?end
-*.[1-9]
 *.[1-9][0-9]
 *.[1-9][0-9][0-9]
 *.[1-9]R
