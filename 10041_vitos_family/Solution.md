@@ -7,8 +7,8 @@ partial sorting problem.
 Approach | Runtime
 --- | ---
 Sort the array and pick the median. | nlogn
-Randomized selection see [test](test)  | n on average
-Median selection see  | n worst case
+Randomized selection, see [RANDOMIZED-SELECT](Selection_algorithms.pdf)  | n on average
+Median of medians selection, see code how to find the median of medians | n worst case
 
 
 Approach | Code | Result

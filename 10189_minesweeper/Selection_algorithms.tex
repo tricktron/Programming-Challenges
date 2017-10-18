@@ -1,0 +1,186 @@
+\documentclass[fontsize=8pt, a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{listings, lipsum}
+\usepackage[left=1cm, right=1cm, top=1cm, bottom=1cm, landscape]{geometry}
+\usepackage{minted}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{fancyhdr}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm,caption}
+\usepackage[noend]{algpseudocode}
+
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} % For more row space, haven't used so far, have to judge from printed result
+
+\makeatletter
+\newsavebox\ltmcbox
+\newenvironment{multicolslongtable}[1]{
+  \setbox\ltmcbox\vbox\bgroup
+  \col@number\@ne
+  \begin{longtable}{#1}
+}{
+  \end{longtable}
+  \unskip
+  \unpenalty
+  \unpenalty\egroup
+  \unvbox\ltmcbox
+}  
+\makeatother
+
+\makeatletter
+
+\newlength\oriarrayrulewidth  
+\newcount\orilowpenalty
+\newcommand\nobreakmidrule{%
+ \noalign{\global\oriarrayrulewidth\arrayrulewidth\relax
+          \global\orilowpenalty\@lowpenalty\relax  
+          \global\@lowpenalty=\numexpr-10000\relax%
+          \global\arrayrulewidth\lightrulewidth\relax}
+ \hline
+ \noalign{\global\@lowpenalty=\orilowpenalty\relax%
+          \global\arrayrulewidth\oriarrayrulewidth\relax}}
+
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\chead{Algorithms summary}
+
+\lstdefinestyle{mystyle}{
+	basicstyle=\small,
+	breaklines=true,
+	breakatwhitespace=true,
+	frame=none,
+	rulecolor=\color{black},
+	}
+
+	
+\lstset{style=mystyle, aboveskip=1em, belowskip=1em}
+\setminted{breaklines=true, frame=none, fontsize=\small}
+\setmintedinline{fontsize=\small}
+\newcommand{\foo}{\color{LightSteelBlue3}\makebox[0pt]{\textbullet}\hskip-0.5pt\vrule width 1pt\hspace{\labelsep}}
+
+% timeline test
+\usepackage[x11names]{xcolor}
+\usepackage{colortbl}
+\usepackage{caption}
+\DeclareCaptionFont{blue}{\color{LightSteelBlue3}}
+
+
+% Development documentation
+% The goal of this template is to produce concise summaries. I started it for a python summary where the aim is to have an overview over the syntax and the built-in functions. I thus opted for a multi-column table-like layout.
+% The major problems to overcome: 
+% 1. tables in multicols because it doesn't support any floats -> Use tabular environment
+% 2. tables longer than a page or in this case longer than a column should "break" over to the next page/column -> not possible with tabular but longtable, supertabular
+% 3. supertabular is hackable by redefining the newpage command but it breaks the elegant distribution algorithm of multicols and you end up with a lot of random space which is bad if the goal is conciseness.
+% 4. After a long time I finally found the solution: Tricking longtable into thinking that you are in single-column mode although we are not: First I created a new environment called multicolslongtable:
+%\makeatletter
+%\newsavebox\ltmcbox
+%\newenvironment{multicolslongtable}[1]{
+%  \setbox\ltmcbox\vbox\bgroup
+%  \col@number\@ne
+%  \begin{longtable}{#1}
+%}{
+%  \end{longtable}
+%  \unskip
+%  \unpenalty
+%  \unpenalty\egroup
+%  \unvbox\ltmcbox
+%}  
+%\makeatother
+
+% It puts the longtable into a box and sets the columnnumber to 1, thus tricking longtable thinking we are in one-column mode. Afterwards we need to unskip some spaces of the box. But honestly I don't konw what the \unskip part and \unpenalty part does.
+
+% 5. I then used this environment to create the following snippet that I saved under tabular, so pay attention if you want a normal tabular:
+
+%\begin{center}
+%\begin{multicolslongtable}{@{}m{\dimexpr 0.5\linewidth-2\tabcolsep}
+%                        m{\dimexpr 0.5\linewidth-2\tabcolsep}@{}}
+%\toprule
+% \\
+%\bottomrule
+%\end{multicolslongtable}%
+%\end{center}
+
+%This is the already improved version with the use of \booktaps as you can see from the use of \toprule. It just looks prettier without too many vertical and horizontal lines. In addition I also added @{} at the beginning and end to suppress any spacing so that the text starts flush to the left (means also better usage of space). Beware that we need to subtract the \tabcolsep twice from the line width to get a perfect fitting table.
+
+\title{Python Essentials}
+\author{Thibault Gagnaux}
+\date{\today}
+
+\begin{document}
+\begin{multicols*}{3}
+
+\begin{center}
+\begin{minipage}{\columnwidth}
+\captionof{algorithm}{Randomized select algorithm\label{random-select}}
+\begin{algorithmic}[1]
+\Procedure{RANDOMIZED-SELECT}{$A, l, r, i$}
+    \If{$l == r$}
+    \Return{$A[l]$}
+    \EndIf
+    \State $q =$ RANDOMIZED-PARTITION$(A, l, r)$
+    \State $k = q - l + 1$
+    \If{$i == k$} \Comment{the pivot value is the answer}
+    \State \Return $A[q]$
+    \ElsIf{$i < k}$
+    \State \Return RANDOMIZED-SELECT$(A, l, q - 1, i)$
+    \Else 
+    \State \Return RANDOMIZED-SELECT $(A, q + 1, r, i - k)$
+    \EndIf
+    \EndProcedure
+\end{algorithmic}
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{\columnwidth}
+\captionof{algorithm}{Randomized partition algorithm\label{random-select}}
+\begin{algorithmic}[1]
+\Procedure{RANDOMIZED-PARTITION}{$A, l, r$}
+    \State $i =$ RANDOM$(l, r)$
+    \State exchange $A[r]$ with $A[i]$
+    \State \Return PARTITION$(A,l,r)$
+\EndProcedure
+\end{algorithmic}
+\end{minipage}
+\end{center}
+
+\begin{center}
+\begin{minipage}{\columnwidth}
+\captionof{algorithm}{Partition algorithm\label{random-select}}
+\begin{algorithmic}[1]
+\Procedure{PARTITION}{$A, l, r$}
+    \State $x = A[r]$
+    \State $i = l - 1$
+    \For{$j = l$ \textbf{to} $r - 1$}
+    \If{$A[j] \leq x$}
+    \State $i = i + 1$
+    \State exchange $A[i]$ with $A[j]$
+    \EndIf
+    \EndFor
+    \State exchange $A[i + 1]$ with $A[r]$
+    \State \Return $i + 1$
+\EndProcedure
+\end{algorithmic}
+\end{minipage}
+\end{center}
+\end{multicols*}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
