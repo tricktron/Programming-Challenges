@@ -1,6 +1,6 @@
 # README
   * [Problem](10041_problem.pdf)
-  * [Solution](Solution.md)
+  * [Solution](10041_solution.md)
 
 
 

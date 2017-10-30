@@ -1,3 +1,3 @@
 # README
   * [Problem](10189_problem.pdf)
-  * [Solution](Solution.md)
+  * [Solution](10189_solution.md)
