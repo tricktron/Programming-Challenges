@@ -1,10 +1,12 @@
 # Programming Challenges
 
+![C++ Version](https://img.shields.io/static/v1?label=C%2B%2B&message=%3E11&color=blue&logo=C%2B%2B)
+![C Version](https://img.shields.io/badge/C-11-blue)
+![MIT Licence](https://img.shields.io/github/license/tricktron/programming-challenges?color=yellow)
+
 Here live the solutions to some programming challenges from sites like
 uva and spoj.
 
-![C++ Version](https://img.shields.io/badge/C%2B%2B-%3E11-blue)
-![C Version](https://img.shields.io/badge/C-11-blue)
 
 The problems are categorised into different topics (adhoc,
 graphs, number theory etc.)
