@@ -1,6 +1,12 @@
 # Programming Challenges
+
 Here live the solutions to some programming challenges from sites like
 uva and spoj.
+
+<div align="center">
+![C++ Version](https://img.shields.io/badge/C%2B%2B-%3E11-blue)
+![C Version](https://img.shields.io/badge/C-11-blue)
+</div>
 
 The problems are categorised into different topics (adhoc,
 graphs, number theory etc.)
