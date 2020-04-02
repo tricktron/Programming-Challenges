@@ -387,4 +387,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+.ccls-cache
+
 # End of https://www.gitignore.io/api/c,c++,latex,macos,cmake,jetbrains+all
