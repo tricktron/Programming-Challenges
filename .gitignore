@@ -388,5 +388,6 @@ Temporary Items
 .apdisk
 
 .ccls-cache
+bin
 
 # End of https://www.gitignore.io/api/c,c++,latex,macos,cmake,jetbrains+all

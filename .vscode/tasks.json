@@ -4,15 +4,28 @@
         {
             "label": "Build and Run C++",
             "type": "shell",
-            "command": "clang",
+            "command": "clang++",
             "args": [
+                "-v",
                 "-std=c++17",
+                "-stdlib=libc++",
+                "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}",
                 "&&",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ]
-        }
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+            ],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+        "label":"Enter nix-shell",
+        "type": "shell",
+        "command": "nix-shell",
+        "problemMatcher": []
+        } 
     ]
 }
