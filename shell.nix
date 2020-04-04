@@ -45,6 +45,6 @@ access to the nix-shell envs including libc++. So I gave up and use my impure ap
     ]
 }
  */
-mkShell.override { stdenv = overrideCC stdenv clang_9; } { 
-  buildInputs = [ (ccls.override { llvmPackages = llvmPackages_9; }) ];
+mkShell { 
+  buildInputs = [ (ccls.override { llvmPackages = llvmPackages_9; }) llvmPackages_9.libcxxClang lldb_9 ];
 }

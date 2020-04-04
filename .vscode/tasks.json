@@ -14,7 +14,7 @@
                 "-o",
                 "${workspaceFolder}/bin/${fileBasenameNoExtension}",
                 "&&",
-                "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}"
             ],
             "problemMatcher": [],
             "options": {
@@ -22,10 +22,22 @@
             }
         },
         {
-        "label":"Enter nix-shell",
-        "type": "shell",
-        "command": "nix-shell",
-        "problemMatcher": []
-        } 
+            "label": "Build and Debug C++",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-v",
+                "-std=c++17",
+                "-stdlib=libc++",
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}",
+            ],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
     ]
 }

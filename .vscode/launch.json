@@ -15,7 +15,7 @@
         "environment": [],
         "externalConsole": false,
         "MIMode": "lldb",
-        "preLaunchTask": "Build and Run C++"
+        "preLaunchTask": "Build and Debug C++"
       }
     ]
   }
